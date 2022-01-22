@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1021669023485464031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3836025277952612451}
+  m_Layer: 0
+  m_Name: Equipped Fire Ball
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3836025277952612451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021669023485464031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4240411102422163119}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4236181996090732125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3836025277952612451}
+    m_Modifications:
+    - target: {fileID: 1663812895145426, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_Name
+      value: SM_Wep_Rock_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.28804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.28804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.28804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.102
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.101
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+--- !u!4 &4240411102422163119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4792198304002290, guid: 9a27b28aaddfd7e4c84339511e0d10e2, type: 3}
+  m_PrefabInstance: {fileID: 4236181996090732125}
+  m_PrefabAsset: {fileID: 0}
