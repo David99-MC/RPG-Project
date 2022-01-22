@@ -71,8 +71,8 @@ namespace RPG.Attributes
             return (healthPoint / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
-        public float GetHealthPoints() {
-            return healthPoint;
+        public int GetHealthPoints() {
+            return (int)healthPoint;
         }
 
         public float GetMaxHealthPoints() {
