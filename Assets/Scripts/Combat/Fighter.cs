@@ -89,7 +89,7 @@ namespace RPG.Combat
         void Hit()
         {
             if (target == null) return;
-            float calculatedDamage = GetComponent<BaseStats>().GetStat(Stat.BaseDamage);
+            float calculatedDamage = GetComponent<BaseStats>().GetStat(Stat.BaseDamage) + currentWeaponConfig.GetDamage();
             if (currentWeapon != null) {
                 currentWeapon.OnHit();
             }
