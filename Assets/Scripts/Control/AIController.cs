@@ -13,9 +13,13 @@ namespace RPG.Control
     {
         [SerializeField] float chaseDistance = 5f;
         [SerializeField] float suspicionTime = 5f;
+
         [SerializeField] PathPatrol patrolPath;
         [SerializeField] float waypointDwellTime = 3f;
         [SerializeField] float waypointTolerance = 1f;
+
+        [SerializeField] float aggroCoolDownTime = 5f;
+
         [Range(0,1)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
         
@@ -28,6 +32,7 @@ namespace RPG.Control
         
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
+        float timeSinceAggrevated = Mathf.Infinity;
         int currentWaypointIndex = 0;
 
         private void Awake() {
@@ -46,27 +51,28 @@ namespace RPG.Control
         {
             if (health.IsDead()) return;
 
-            if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
-            {
+            if (IsAggrevated() && fighter.CanAttack(player)) {
                 AttackBehaviour();
             }
-            else if (!InAttackRangeOfPlayer() && timeSinceLastSawPlayer <= suspicionTime)
-            {
-                // suspicion state
+            else if (!IsAggrevated() && timeSinceLastSawPlayer < suspicionTime) {
                 suspicionBehaviour();
             }
-            else
-            {
-                // go back to guardPosition
+            else { // go back to guardPosition
                 PatrolBehaviour();
             }
             UpdateTimers();
+        }
+
+        public void Aggrevate() {
+            // reset the time so now the enemy will chase for the amount of aggroCoolDownTime
+            timeSinceAggrevated = 0f;
         }
 
         void UpdateTimers()
         {
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedAtWaypoint += Time.deltaTime;
+            timeSinceAggrevated += Time.deltaTime;
         }
 
         void PatrolBehaviour()
@@ -113,13 +119,15 @@ namespace RPG.Control
             fighter.Attack(player);
         }
 
-        bool InAttackRangeOfPlayer()
-        {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
-            return distance < chaseDistance;
+        bool IsAggrevated() {
+            float currentDistance = Vector3.Distance(transform.position, player.transform.position);
+            if (currentDistance < chaseDistance || timeSinceAggrevated < aggroCoolDownTime) {
+                return true; 
+            }
+            return false;
         }
 
-        void OnDrawGizmosSelected() {
+        void OnDrawGizmos() {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }
