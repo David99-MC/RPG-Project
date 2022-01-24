@@ -26,7 +26,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3513ebb9ff04e4bbe4456bd8dc6cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPathLength: 40
   cursorMappings:
   - type: 0
     texture: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
@@ -43,6 +42,7 @@ MonoBehaviour:
   - type: 4
     texture: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     hotspot: {x: 0, y: 0}
+  raycastRadius: 0.5
 --- !u!114 &8169164312894136404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +150,10 @@ PrefabInstance:
     - target: {fileID: 6692335840470499994, guid: cbe75f4c0799ed24a8096418a9c34d07, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692335840470499997, guid: cbe75f4c0799ed24a8096418a9c34d07, type: 3}
+      propertyPath: maxSpeed
+      value: 5.66
       objectReference: {fileID: 0}
     - target: {fileID: 6869978672078303113, guid: cbe75f4c0799ed24a8096418a9c34d07, type: 3}
       propertyPath: weapon

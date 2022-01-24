@@ -60,7 +60,9 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointDwellTime: 3
   waypointTolerance: 1
-  patrolSpeedFraction: 0.2
+  aggroCoolDownTime: 5
+  patrolSpeedFraction: 0.475
+  shoutDistance: 6
 --- !u!1001 &1852776033360298767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,6 +161,10 @@ PrefabInstance:
     - target: {fileID: 6692335840470499994, guid: cbe75f4c0799ed24a8096418a9c34d07, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692335840470499997, guid: cbe75f4c0799ed24a8096418a9c34d07, type: 3}
+      propertyPath: maxSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6869978672078303113, guid: cbe75f4c0799ed24a8096418a9c34d07, type: 3}
       propertyPath: defaultWeapon

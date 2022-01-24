@@ -6,6 +6,7 @@ using RPG.Combat;
 using RPG.Movement;
 using RPG.Core;
 using RPG.Attributes;
+using System;
 
 namespace RPG.Control
 {
@@ -22,6 +23,8 @@ namespace RPG.Control
 
         [Range(0,1)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
+
+        [SerializeField] float shoutDistance = 6f;
         
         GameObject player;
         Fighter fighter;
@@ -117,6 +120,17 @@ namespace RPG.Control
         {
             timeSinceLastSawPlayer = 0f;
             fighter.Attack(player);
+            AggrevateOthers();
+        }
+
+        private void AggrevateOthers()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
+            foreach (RaycastHit hit in hits) {
+                AIController target = hit.transform.GetComponent<AIController>();
+                if (target == null) continue;
+                target.Aggrevate();
+            }
         }
 
         bool IsAggrevated() {
