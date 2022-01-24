@@ -17,8 +17,6 @@ namespace RPG.Control
         Fighter fighter;
         Health health;
 
-        [SerializeField] float maxPathLength = 40f;
-
         [System.Serializable]
         struct CursorMapping {
             public CursorType type;
@@ -87,13 +85,13 @@ namespace RPG.Control
             return hits;
         }
 
-        bool InteractWithMovement()
-        {
+        bool InteractWithMovement() {
             
             Vector3 moveToLocation;
             bool hasHit = RaycastNavmesh(out moveToLocation);
             if (hasHit) // if it hits something
             {
+                if (!mover.CanMoveTo(moveToLocation)) return false;
                 if (Input.GetMouseButton(1))
                 {
                     mover.StartMoveAction(moveToLocation, 1f);
@@ -117,23 +115,7 @@ namespace RPG.Control
             if (!hasFound) return false;            
             moveToLocation = navMeshHit.position;
 
-            NavMeshPath path = new NavMeshPath(); // *
-            // the line below will store info into the path* variable
-            bool hasPath = NavMesh.CalculatePath(transform.position, moveToLocation, NavMesh.AllAreas, path);
-            if (!hasPath) return false; //can't calculate path
-            if (path.status != NavMeshPathStatus.PathComplete) return false; // can't complete the path
-            if (GetPathLength(path) > maxPathLength) return false; // limit how far the NavMeshAgent can cover;
             return true;
-        }
-
-        float GetPathLength(NavMeshPath path)
-        {
-            float total = 0;
-            if (path.corners.Length <= 2) return 0;
-            for (int i = 0; i < path.corners.Length-1; i++) {
-                total += Vector3.Distance(path.corners[i], path.corners[i+1]);
-            }
-            return total;
         }
 
         void SetCursor(CursorType type) {
