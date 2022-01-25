@@ -5,14 +5,17 @@ using UnityEngine;
 
 using RPG.Control;
 using RPG.Attributes;
+using RPG.Movement;
+using UnityEngine.AI;
 
 namespace RPG.Combat
 {
     public class WeaponPickup : MonoBehaviour, IRaycastable
     {
-        [SerializeField] WeaponConfig weapon = null;
+        [SerializeField] WeaponConfig weaponConfig = null;
         [SerializeField] float healthToRestore = 0f;
         [SerializeField] float hideTime = 5f;
+        [SerializeField] float interactRadius = .5f;
 
         private void OnTriggerEnter(Collider other) {
             if (other.tag == "Player") {
@@ -22,8 +25,8 @@ namespace RPG.Combat
 
         private void PickUp(GameObject player)
         {
-            if (weapon != null) {
-                player.GetComponent<Fighter>().EquipWeapon(weapon);
+            if (weaponConfig != null) {
+                player.GetComponent<Fighter>().EquipWeapon(weaponConfig);
             }
             else {
                 player.GetComponent<Health>().Heal(healthToRestore);
@@ -47,8 +50,14 @@ namespace RPG.Combat
 
         public bool HandleRaycast(PlayerController callingController)
         {
-            if (Input.GetMouseButtonDown(1)) {
-                PickUp(callingController.gameObject);
+            float distance = Vector3.Distance(callingController.transform.position, transform.position);
+            NavMeshAgent player = callingController.GetComponent<NavMeshAgent>();
+            if (Input.GetMouseButton(1)) {
+                if (distance < interactRadius) {
+                    PickUp(callingController.gameObject);
+                }
+                player.SetDestination(transform.position);
+                player.stoppingDistance = interactRadius;
             }
             return true;
         }

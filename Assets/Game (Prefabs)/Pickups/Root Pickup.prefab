@@ -57,4 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27428d026d51f64b9553f450b3ba661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 11400000, guid: 991377b185d7b6d47ba3a3930f457f9a, type: 2}
+  weaponConfig: {fileID: 0}
+  healthToRestore: 0
+  hideTime: 5
+  interactRadius: 0.5

@@ -82,6 +82,15 @@ namespace RPG.Movement
             return total;
         }
 
+        // Animation event
+        void FootL() {
+            //play some effects?
+        }
+
+        void FootR() {
+            //play some effects?
+        }
+
         public object CaptureState()
         {
             return new SerializableVector3(transform.position);
