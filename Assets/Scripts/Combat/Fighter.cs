@@ -41,18 +41,19 @@ namespace RPG.Combat
             }
         }
 
-        void Update() {
+        void Update()
+        {
             timeSinceLastAttack += Time.deltaTime;
 
             if (target == null) return;
             if (target.IsDead()) return;
 
-            bool isInRange = Vector3.Distance(transform.position, target.transform.position) <= currentWeaponConfig.GetRange();
-            
-            if (!isInRange) { // this {if else} is now having a target
+            if (!IsInRange(target.transform))
+            { // this {if else} is now having a target
                 mover.MoveTo(target.transform.position, 1f);
             }
-            else { // in range
+            else
+            { // in range
                 mover.Cancel();
                 AttackBehaviour();
             }
@@ -105,6 +106,11 @@ namespace RPG.Combat
             Hit();
         }
 
+        private bool IsInRange(Transform targetTransform)
+        {
+            return Vector3.Distance(transform.position, targetTransform.position) <= currentWeaponConfig.GetRange();
+        }
+
         private void TriggerAttack()
         {
             animator.ResetTrigger("stopAttack");
@@ -114,10 +120,12 @@ namespace RPG.Combat
         public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null) { return false; }
-            if (!mover.CanMoveTo(combatTarget.transform.position)) { return false; }
-
-            Health target = combatTarget.GetComponent<Health>();
-            if (target != null && !target.IsDead())
+            if (!mover.CanMoveTo(combatTarget.transform.position) && 
+                !IsInRange(combatTarget.transform)) {
+                    return false; 
+                }
+            Health enemy = combatTarget.GetComponent<Health>();
+            if (enemy != null && !enemy.IsDead())
             {
                 return true;
             }
