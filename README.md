@@ -3,7 +3,7 @@ This is a Diablo-inspired RPG with my takes on the features. A nice place where 
 The game is still a demo and under development, which means it will get more and more updates in near future (as I learn new things to apply)!
 
 # A glance over the architecture of the code
-In order to optimize the efficiency and flexibility, the player will have their personal PlayerController and enemies will have their own AIController, both of which will share mutual scripts such as moving and fighting. Thanks to C#'s OOP feature, this is achieved easily as one class will methods from other classes.
+In order to optimize the efficiency and flexibility, the player will have their personal PlayerController and enemies will have their own AIController, both of which will share mutual scripts such as moving and fighting. Thanks to C#'s OOP feature, this is achieved easily as one class will call other public methods from other classes.
 
 # The weapon system
 Currently, each weapon is described by a scriptable object. By doing this, it is easier to modify the weapons' stats, decide if it is right or left-handed, and their corresponding animations. Moreover, using Delegates help each weapon expresses unique SFX as well as Interface to integrate any bonuses such as elemental factors or rarity.
