@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] float rotateSpeed = 100f;
     
-    float currentZoom = 6f;
+    float currentZoom = 7f;
     float playerPeak = 2f;
     float currentRotation = 0f;
 

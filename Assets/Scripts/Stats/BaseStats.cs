@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Stats
 {
     public class BaseStats : MonoBehaviour
     {
         public event Action OnLevelUp;
-
+        [SerializeField] UnityEvent sfx;
         [SerializeField] Progression progression = null;
         [Range(1,99)]
         [SerializeField] int startingLevel = 1;
@@ -54,6 +55,7 @@ namespace RPG.Stats
 
         void LevelUpEffect()
         {
+            sfx.Invoke();
             Instantiate(levelUpFX, transform);
         }
 
