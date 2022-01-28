@@ -3,6 +3,9 @@
 This is a Diablo-inspired RPG with my takes on the features. A nice place where I will reinforce my game programming experience as well as satisfy my imagination.
 The game is still a demo and under development, which means it will get more and more updates in near future (as I learn new things to apply)!
 
+# the current AI state
+The enemies each will have a patrol path to follow. If they detect the player or are attacked, their aggression behavior will occur which they will chase and attack the player. However, if the player get out of their range by out run them, they will perform a suspicious action for a certain time then go back to do their duties.
+
 # A glance over the architecture of the code
 In order to optimize the efficiency and flexibility, the player will have their personal PlayerController and enemies will have their own AIController, both of which will share mutual scripts such as moving and fighting. Thanks to C#'s OOP feature, this is achieved easily as one class will call other public methods from other classes.
 
