@@ -39,7 +39,7 @@ namespace RPG.Stats
         private void OnDisable() {
             if (experience != null) {
                 experience.OnExperienceGained -= UpdateLevel;
-                // add the function to this delegation list (subscribe to the list)
+                // (unsubscribe to the list)
             }
         }
 
